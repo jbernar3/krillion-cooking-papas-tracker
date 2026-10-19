@@ -5,7 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Cooking Papas</title>
   <meta name="description" content="The Cooking Papas' daily krillion.io scoreboard.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦐</text></svg>">
+  <link rel="icon" href="icons/icon-192.png">
+  <!-- Home screen app: icon, name, and full-screen launch on iPhone and Android -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Cooking Papas">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0f3b57">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -23,6 +31,13 @@
     <h1 class="wordmark">Cooking<br>Papas</h1>
     <p class="tagline">Who ate the most krill today? Daily <a href="https://krillion.io" target="_blank" rel="noopener">krillion.io</a> scores, settled.</p>
   </header>
+
+  <div id="install-hint" class="banner install" hidden>
+    <p>Add Cooking Papas to your home screen: tap <strong>Share</strong>
+      <svg class="share-glyph" viewBox="0 0 20 20" aria-label="(the square with an arrow)"><path d="M10 2v11M6 6l4-4 4 4M5 9H3.5v9h13V9H15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>,
+      then <strong>Add to Home Screen</strong>.</p>
+    <button type="button" id="install-dismiss" class="banner-close" aria-label="Dismiss">×</button>
+  </div>
 
   <p id="demo-banner" class="banner" hidden>
     Demo mode: scores are saved in this browser only. Add your Supabase keys to <code>config.js</code> to share them.

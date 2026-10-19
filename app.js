@@ -277,6 +277,23 @@ function setupCalendar() {
   $("next-month").addEventListener("click", () => shift(1));
 }
 
+// On iPhone/iPad Safari, explain how to add the site to the home screen (until dismissed or installed).
+function setupInstallHint() {
+  const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const installed = navigator.standalone || matchMedia("(display-mode: standalone)").matches;
+  let dismissed = false;
+  try { dismissed = localStorage.getItem("cooking-papas-install-hint") === "dismissed"; } catch {}
+  if (!ios || installed || dismissed) return;
+
+  $("install-hint").hidden = false;
+  $("install-dismiss").addEventListener("click", () => {
+    $("install-hint").hidden = true;
+    try { localStorage.setItem("cooking-papas-install-hint", "dismissed"); } catch {}
+  });
+}
+
+setupInstallHint();
 setupForm();
 setupCalendar();
 await initStore();
