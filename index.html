@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Cooking Papas</title>
+  <meta name="description" content="The Cooking Papas' daily krillion.io scoreboard.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦐</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="hat" viewBox="0 0 32 32">
+      <path d="M9 21c-3.6-.4-6-3-6-6.3C3 11 6 8.4 9.4 8.8 10.6 5.9 13.1 4 16 4s5.4 1.9 6.6 4.8C26 8.4 29 11 29 14.7c0 3.3-2.4 5.9-6 6.3V27H9z" fill="currentColor"/>
+      <path d="M9 23.5h14" stroke="var(--hat-band)" stroke-width="1.6"/>
+    </symbol>
+  </svg>
+
+  <header class="masthead">
+    <h1 class="wordmark">Cooking<br>Papas</h1>
+    <p class="tagline">Who ate the most krill today? Daily <a href="https://krillion.io" target="_blank" rel="noopener">krillion.io</a> scores, settled.</p>
+  </header>
+
+  <p id="demo-banner" class="banner" hidden>
+    Demo mode: scores are saved in this browser only. Add your Supabase keys to <code>config.js</code> to share them.
+  </p>
+
+  <main class="layout">
+    <section class="kitchen" aria-labelledby="today-title">
+      <h2 id="today-title" class="section-title">Today's plates</h2>
+      <ol id="today-board" class="plates"></ol>
+
+      <form id="score-form" class="order" autocomplete="off">
+        <div class="field">
+          <label for="player">I'm</label>
+          <select id="player" required>
+            <option value="" disabled selected>Pick your name</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="score">Score</label>
+          <input id="score" type="text" inputmode="numeric" placeholder="e.g. 48,210" required>
+        </div>
+        <div class="field">
+          <label for="date">Day</label>
+          <input id="date" type="date" required>
+        </div>
+        <button type="submit" class="btn">Save score</button>
+        <p id="form-msg" class="form-msg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="calendar" aria-labelledby="month-title">
+      <div class="cal-head">
+        <button type="button" class="icon-btn" id="prev-month" aria-label="Previous month">‹</button>
+        <h2 id="month-title" class="section-title"></h2>
+        <button type="button" class="icon-btn" id="next-month" aria-label="Next month">›</button>
+      </div>
+      <div class="weekdays" aria-hidden="true">
+        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+      <div id="grid" class="grid" role="grid"></div>
+      <div id="day-detail" class="day-detail" aria-live="polite"></div>
+    </section>
+
+    <section class="tally" aria-labelledby="tally-title">
+      <h2 id="tally-title" class="section-title">Chef's hats</h2>
+      <table>
+        <thead>
+          <tr><th scope="col">Papa</th><th scope="col" id="tally-month-col">This month</th><th scope="col">All time</th><th scope="col">Best score</th></tr>
+        </thead>
+        <tbody id="tally-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
