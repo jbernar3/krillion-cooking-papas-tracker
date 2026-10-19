@@ -61,6 +61,8 @@ code { font-size: .9em; }
   align-items: flex-end;
   gap: 14px 32px;
 }
+/* The wordmark's tight line-height lets the "p" descender hang below the box. */
+@media (min-width: 880px) { .masthead { padding-bottom: 48px; } }
 .wordmark {
   margin: 0;
   font: 400 clamp(3.2rem, 13vw, 6.5rem)/.86 "Bagel Fat One", "Figtree", sans-serif;
