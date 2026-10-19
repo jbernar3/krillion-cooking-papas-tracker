@@ -234,7 +234,7 @@ function setupForm() {
     const player = select.value;
     const raw = $("score").value.replace(/[,\s_.]/g, "");
     if (!player) return showMsg("Pick your name first.", true);
-    if (!/^\d+$/.test(raw)) return showMsg("Enter your score as a whole number, like 48210.", true);
+    if (!/^\d+$/.test(raw)) return showMsg("Enter your score as a whole number, like 412.", true);
     if (!date.value || date.value > todayStr()) return showMsg("Pick today or an earlier day.", true);
 
     const score = Number(raw);
