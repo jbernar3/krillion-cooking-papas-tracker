@@ -111,7 +111,7 @@ function renderToday() {
 }
 
 function cellBackground(ids) {
-  const tint = (id) => `color-mix(in srgb, ${byId[id].color} var(--tint), var(--plate))`;
+  const tint = (id) => `color-mix(in srgb, ${byId[id].color} var(--tint), var(--deep))`;
   if (ids.length === 1) return tint(ids[0]);
   const step = 100 / ids.length;
   return `linear-gradient(135deg, ${ids.map((id, i) => `${tint(id)} ${i * step}% ${(i + 1) * step}%`).join(", ")})`;
@@ -141,7 +141,7 @@ function renderCalendar() {
     html += `<button type="button" class="${cls}" data-date="${date}" ${future ? "disabled" : ""}
       aria-label="${label}" ${ids.length ? `style="--cell-bg:${cellBackground(ids)}"` : ""}>
       <span class="num">${d}</span>
-      ${ids.length ? `<span class="hats${ids.length > 1 ? " tie" : ""}">${ids.map((id) => `<span style="color:${byId[id].color}">${hat()}</span>`).join("")}</span>
+      ${ids.length ? `<span class="hats${ids.length > 1 ? " tie" : ""}">${ids.map((id) => `<span style="--hat-band:${byId[id].color}">${hat()}</span>`).join("")}</span>
       <span class="top">${fmt(top)}</span>` : ""}
     </button>`;
   }
@@ -192,11 +192,47 @@ function renderTally() {
     .join("");
 }
 
+// All-time points: the Lebron has the most, the doofus the fewest. Tied totals share the title.
+function renderStandings() {
+  if (days.size === 0) {
+    $("lebron-body").innerHTML = `<p class="standing-empty">No scores yet, so the crown is up for grabs.</p>`;
+    $("doofus-body").innerHTML = `<p class="standing-empty">No scores yet, so nobody's the doofus. Yet.</p>`;
+    return;
+  }
+  const totals = Object.fromEntries(PLAYERS.map((p) => [p.id, 0]));
+  for (const day of days.values()) {
+    for (const [id, score] of Object.entries(day)) if (id in totals) totals[id] += score;
+  }
+  const values = Object.values(totals);
+  const high = Math.max(...values);
+  const low = Math.min(...values);
+  const below = values.filter((t) => t < high);
+  const above = values.filter((t) => t > low);
+
+  $("lebron-body").innerHTML = standingCard("crown", "--jewel", PLAYERS.filter((p) => totals[p.id] === high),
+    `Total points: <strong>${fmt(high)}</strong>, ${below.length ? `${fmt(high - Math.max(...below))} ahead of the next papa` : "all tied up"}`);
+  $("doofus-body").innerHTML = standingCard("dunce", "--cap-band", PLAYERS.filter((p) => totals[p.id] === low),
+    `Total points: <strong>${fmt(low)}</strong>, ${above.length ? `${fmt(Math.min(...above) - low)} behind the next papa` : "all tied up"}`);
+}
+
+function standingCard(icon, colorVar, holders, why) {
+  return `<ul class="standing-list">${holders
+    .map((p) => `<li style="--pc:${p.color}">
+        <svg class="standing-icon ${icon}" style="${colorVar}:${p.color}" aria-hidden="true"><use href="#${icon}"/></svg>
+        <div class="standing-text">
+          <span class="standing-name">${p.full}</span>
+          <span class="standing-why">${why}</span>
+        </div>
+      </li>`)
+    .join("")}</ul>`;
+}
+
 function render() {
   renderToday();
   renderCalendar();
   renderDetail();
   renderTally();
+  renderStandings();
 }
 
 async function refresh() {

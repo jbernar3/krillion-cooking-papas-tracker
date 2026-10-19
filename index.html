@@ -13,23 +13,34 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Cooking Papas">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="theme-color" content="#0f3b57">
+  <meta name="theme-color" content="#050a14">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <symbol id="hat" viewBox="0 0 32 32">
-      <path d="M9 21c-3.6-.4-6-3-6-6.3C3 11 6 8.4 9.4 8.8 10.6 5.9 13.1 4 16 4s5.4 1.9 6.6 4.8C26 8.4 29 11 29 14.7c0 3.3-2.4 5.9-6 6.3V27H9z" fill="currentColor"/>
-      <path d="M9 23.5h14" stroke="var(--hat-band)" stroke-width="1.6"/>
-    </symbol>
+    <symbol id="hat" viewBox="0 0 10 8" shape-rendering="crispEdges"><rect x="2" y="0" width="2" height="1" fill="currentColor"/><rect x="6" y="0" width="2" height="1" fill="currentColor"/><rect x="1" y="1" width="9" height="1" fill="currentColor"/><rect x="0" y="2" width="10" height="1" fill="currentColor"/><rect x="0" y="3" width="10" height="1" fill="currentColor"/><rect x="1" y="4" width="8" height="1" fill="currentColor"/><rect x="2" y="5" width="6" height="1" fill="currentColor"/><rect x="2" y="6" width="6" height="1" fill="var(--hat-band)"/><rect x="2" y="7" width="6" height="1" fill="currentColor"/></symbol>
+    <symbol id="crown" viewBox="0 0 11 9" shape-rendering="crispEdges"><rect x="0" y="0" width="1" height="1" fill="#ffe08a"/><rect x="5" y="0" width="1" height="1" fill="#ffe08a"/><rect x="10" y="0" width="1" height="1" fill="#ffe08a"/><rect x="0" y="1" width="1" height="1" fill="#ffd166"/><rect x="5" y="1" width="1" height="1" fill="#ffd166"/><rect x="10" y="1" width="1" height="1" fill="#ffd166"/><rect x="0" y="2" width="2" height="1" fill="#ffd166"/><rect x="4" y="2" width="3" height="1" fill="#ffd166"/><rect x="9" y="2" width="2" height="1" fill="#ffd166"/><rect x="0" y="3" width="3" height="1" fill="#ffd166"/><rect x="4" y="3" width="3" height="1" fill="#ffd166"/><rect x="8" y="3" width="3" height="1" fill="#ffd166"/><rect x="0" y="4" width="11" height="1" fill="#ffd166"/><rect x="0" y="5" width="11" height="1" fill="#ffd166"/><rect x="0" y="6" width="1" height="1" fill="#ffd166"/><rect x="1" y="6" width="1" height="1" fill="var(--jewel, #ff5d8f)"/><rect x="2" y="6" width="3" height="1" fill="#ffd166"/><rect x="5" y="6" width="1" height="1" fill="var(--jewel, #ff5d8f)"/><rect x="6" y="6" width="3" height="1" fill="#ffd166"/><rect x="9" y="6" width="1" height="1" fill="var(--jewel, #ff5d8f)"/><rect x="10" y="6" width="1" height="1" fill="#ffd166"/><rect x="0" y="7" width="11" height="1" fill="#ffd166"/><rect x="0" y="8" width="11" height="1" fill="#c9952e"/></symbol>
+    <symbol id="dunce" viewBox="0 0 9 11" shape-rendering="crispEdges"><rect x="4" y="0" width="1" height="1" fill="#ff5d8f"/><rect x="4" y="1" width="1" height="1" fill="#e8f1ff"/><rect x="3" y="2" width="3" height="1" fill="#e8f1ff"/><rect x="3" y="3" width="3" height="1" fill="#e8f1ff"/><rect x="3" y="4" width="1" height="1" fill="#e8f1ff"/><rect x="4" y="4" width="1" height="1" fill="#1b3050"/><rect x="5" y="4" width="1" height="1" fill="#e8f1ff"/><rect x="2" y="5" width="1" height="1" fill="#e8f1ff"/><rect x="3" y="5" width="3" height="1" fill="#1b3050"/><rect x="6" y="5" width="1" height="1" fill="#e8f1ff"/><rect x="2" y="6" width="1" height="1" fill="#e8f1ff"/><rect x="3" y="6" width="1" height="1" fill="#1b3050"/><rect x="4" y="6" width="1" height="1" fill="#e8f1ff"/><rect x="5" y="6" width="1" height="1" fill="#1b3050"/><rect x="6" y="6" width="1" height="1" fill="#e8f1ff"/><rect x="1" y="7" width="2" height="1" fill="#e8f1ff"/><rect x="3" y="7" width="1" height="1" fill="#1b3050"/><rect x="4" y="7" width="1" height="1" fill="#e8f1ff"/><rect x="5" y="7" width="1" height="1" fill="#1b3050"/><rect x="6" y="7" width="2" height="1" fill="#e8f1ff"/><rect x="1" y="8" width="2" height="1" fill="#e8f1ff"/><rect x="3" y="8" width="3" height="1" fill="#1b3050"/><rect x="6" y="8" width="2" height="1" fill="#e8f1ff"/><rect x="0" y="9" width="9" height="1" fill="#e8f1ff"/><rect x="0" y="10" width="9" height="1" fill="var(--cap-band, #ff5d8f)"/></symbol>
+    <symbol id="cloud" viewBox="0 0 20 5" shape-rendering="crispEdges"><rect x="6" y="0" width="4" height="1" fill="#ffffff"/><rect x="4" y="1" width="8" height="1" fill="#ffffff"/><rect x="14" y="1" width="3" height="1" fill="#ffffff"/><rect x="2" y="2" width="17" height="1" fill="#ffffff"/><rect x="0" y="3" width="20" height="1" fill="#ffffff"/><rect x="0" y="4" width="20" height="1" fill="#d7ecf7"/></symbol>
   </svg>
 
-  <header class="masthead">
-    <h1 class="wordmark">Cooking<br>Papas</h1>
-    <p class="tagline">Who ate the most krill today? Daily <a href="https://krillion.io" target="_blank" rel="noopener">krillion.io</a> scores, settled.</p>
+  <header class="sky">
+    <div class="sky-art" aria-hidden="true">
+      <svg class="sun" viewBox="0 0 10 10" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="0" width="4" height="1" fill="#ffd166"/><rect x="1" y="1" width="8" height="1" fill="#ffd166"/><rect x="1" y="2" width="8" height="1" fill="#ffd166"/><rect x="0" y="3" width="10" height="1" fill="#ffd166"/><rect x="0" y="4" width="10" height="1" fill="#ffd166"/><rect x="0" y="5" width="10" height="1" fill="#ffd166"/><rect x="0" y="6" width="10" height="1" fill="#ffd166"/><rect x="1" y="7" width="8" height="1" fill="#ffd166"/><rect x="1" y="8" width="8" height="1" fill="#ffd166"/><rect x="3" y="9" width="4" height="1" fill="#ffd166"/></svg>
+      <svg class="cloud c1"><use href="#cloud"/></svg>
+      <svg class="cloud c2"><use href="#cloud"/></svg>
+      <svg class="cloud c3"><use href="#cloud"/></svg>
+    </div>
+    <div class="masthead">
+      <h1 class="wordmark">Cooking Papas</h1>
+      <p class="subtitle">The daily scoreboard</p>
+      <p class="tagline">Who ate the most krill today? Daily <a href="https://krillion.io" target="_blank" rel="noopener">krillion.io</a> scores, settled.</p>
+    </div>
+    <svg class="boat" viewBox="0 0 34 17" shape-rendering="crispEdges" aria-hidden="true"><rect x="27" y="0" width="1" height="1" fill="#0b1424"/><rect x="28" y="0" width="4" height="1" fill="#ff5d8f"/><rect x="27" y="1" width="1" height="1" fill="#0b1424"/><rect x="28" y="1" width="6" height="1" fill="#ff5d8f"/><rect x="27" y="2" width="1" height="1" fill="#0b1424"/><rect x="28" y="2" width="4" height="1" fill="#ff5d8f"/><rect x="27" y="3" width="1" height="1" fill="#0b1424"/><rect x="7" y="4" width="2" height="1" fill="#ffffff"/><rect x="13" y="4" width="2" height="1" fill="#ffffff"/><rect x="19" y="4" width="2" height="1" fill="#ffffff"/><rect x="27" y="4" width="1" height="1" fill="#0b1424"/><rect x="6" y="5" width="4" height="1" fill="#ffffff"/><rect x="12" y="5" width="4" height="1" fill="#ffffff"/><rect x="18" y="5" width="4" height="1" fill="#ffffff"/><rect x="27" y="5" width="1" height="1" fill="#0b1424"/><rect x="6" y="6" width="4" height="1" fill="#ffffff"/><rect x="12" y="6" width="4" height="1" fill="#ffffff"/><rect x="18" y="6" width="4" height="1" fill="#ffffff"/><rect x="27" y="6" width="1" height="1" fill="#0b1424"/><rect x="6" y="7" width="4" height="1" fill="#ffd166"/><rect x="12" y="7" width="4" height="1" fill="#4de3ff"/><rect x="18" y="7" width="4" height="1" fill="#ff5d8f"/><rect x="27" y="7" width="1" height="1" fill="#0b1424"/><rect x="6" y="8" width="4" height="1" fill="#f2c9a0"/><rect x="12" y="8" width="4" height="1" fill="#f2c9a0"/><rect x="18" y="8" width="4" height="1" fill="#f2c9a0"/><rect x="27" y="8" width="1" height="1" fill="#0b1424"/><rect x="6" y="9" width="1" height="1" fill="#f2c9a0"/><rect x="7" y="9" width="1" height="1" fill="#1b3050"/><rect x="8" y="9" width="1" height="1" fill="#f2c9a0"/><rect x="9" y="9" width="1" height="1" fill="#1b3050"/><rect x="12" y="9" width="1" height="1" fill="#f2c9a0"/><rect x="13" y="9" width="1" height="1" fill="#1b3050"/><rect x="14" y="9" width="1" height="1" fill="#f2c9a0"/><rect x="15" y="9" width="1" height="1" fill="#1b3050"/><rect x="18" y="9" width="1" height="1" fill="#f2c9a0"/><rect x="19" y="9" width="1" height="1" fill="#1b3050"/><rect x="20" y="9" width="1" height="1" fill="#f2c9a0"/><rect x="21" y="9" width="1" height="1" fill="#1b3050"/><rect x="27" y="9" width="1" height="1" fill="#0b1424"/><rect x="6" y="10" width="4" height="1" fill="#f2c9a0"/><rect x="12" y="10" width="4" height="1" fill="#f2c9a0"/><rect x="18" y="10" width="4" height="1" fill="#f2c9a0"/><rect x="27" y="10" width="1" height="1" fill="#0b1424"/><rect x="0" y="11" width="34" height="1" fill="#0b1424"/><rect x="0" y="12" width="1" height="1" fill="#0b1424"/><rect x="1" y="12" width="32" height="1" fill="#1b3050"/><rect x="33" y="12" width="1" height="1" fill="#0b1424"/><rect x="1" y="13" width="32" height="1" fill="#0b1424"/><rect x="2" y="14" width="9" height="1" fill="#0b1424"/><rect x="11" y="14" width="1" height="1" fill="#4de3ff"/><rect x="12" y="14" width="5" height="1" fill="#0b1424"/><rect x="17" y="14" width="1" height="1" fill="#4de3ff"/><rect x="18" y="14" width="5" height="1" fill="#0b1424"/><rect x="23" y="14" width="1" height="1" fill="#4de3ff"/><rect x="24" y="14" width="8" height="1" fill="#0b1424"/><rect x="3" y="15" width="28" height="1" fill="#0b1424"/><rect x="4" y="16" width="26" height="1" fill="#0b1424"/></svg>
+    <div class="waterline" aria-hidden="true"></div>
   </header>
 
   <div id="install-hint" class="banner install" hidden>
@@ -45,7 +56,7 @@
 
   <main class="layout">
     <section class="kitchen" aria-labelledby="today-title">
-      <h2 id="today-title" class="section-title">Today's plates</h2>
+      <h2 id="today-title" class="section-title">Today's catch</h2>
       <ol id="today-board" class="plates"></ol>
 
       <form id="score-form" class="order" autocomplete="off">
@@ -63,7 +74,7 @@
           <label for="date">Day</label>
           <input id="date" type="date" required>
         </div>
-        <button type="submit" class="btn">Save score</button>
+        <button type="submit" class="btn"><span aria-hidden="true">▼</span> Save score <span aria-hidden="true">▼</span></button>
         <p id="form-msg" class="form-msg" role="status" aria-live="polite"></p>
       </form>
     </section>
@@ -89,6 +100,16 @@
         </thead>
         <tbody id="tally-body"></tbody>
       </table>
+    </section>
+
+    <section class="standing lebron" aria-labelledby="lebron-title">
+      <h2 id="lebron-title" class="section-title">Current Lebron</h2>
+      <div id="lebron-body"></div>
+    </section>
+
+    <section class="standing doofus" aria-labelledby="doofus-title">
+      <h2 id="doofus-title" class="section-title">Current doofus</h2>
+      <div id="doofus-body"></div>
     </section>
   </main>
 
