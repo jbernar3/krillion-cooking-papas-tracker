@@ -1,9 +1,12 @@
 # Cooking Papas 🦐
 
-The daily [krillion.io](https://krillion.io) scoreboard for Jefferson, Davide and Jack.
+The daily [krillion.io](https://krillion.io) scoreboard for Jefferson, Davide, Jack and baby Adam.
+
+Season 2 (all four papas) is the live board. Season 1 (Jefferson, Davide and Jack, Oct 18 to Nov 18, 2026)
+is frozen behind the **Season 1 archive** button, and its champion holds the **Reigning Lebron** title at the bottom of the page.
 
 Pick your name, enter your score, and the calendar crowns whoever ate the most krill that day.
-If two or three papas tie for the top score, they share the chef's hat. Saving again for the same
+If two or more papas tie for the top score, they share the chef's hat. Saving again for the same
 day replaces your earlier score.
 
 It's a plain static site (`index.html`, `style.css`, `app.js`) with scores stored in a free
@@ -26,6 +29,7 @@ If `config.js` is empty, the site runs in **demo mode** and scores are saved in 
    Any name and region works, and you can save the database password somewhere and forget about it.
 2. In the project, open **SQL Editor → New query**, paste the contents of
    [`supabase/schema.sql`](supabase/schema.sql), and click **Run**.
+   Then do the same with [`supabase/season2.sql`](supabase/season2.sql).
 3. Open **Project Settings → API** (or **Connect**) and copy:
    - the **Project URL** (`https://xxxx.supabase.co`)
    - the **publishable** key (`sb_publishable_…`) or, on older projects, the **anon public** key
@@ -52,7 +56,7 @@ Tip: on a phone, open the link and use **Add to Home Screen** so it works like a
 ## Things to know
 
 - **Anyone with the link can add or change scores.** There are no logins, which keeps things quick
-  for three friends. The database rules allow reading, adding and overwriting scores, but never
+  for four friends. The database rules allow reading, adding and overwriting scores, but never
   deleting them. If trolling ever becomes a problem, add Supabase Auth and tighten the policies in
   `schema.sql`.
 - **Free Supabase projects pause after about a week with no activity.** Daily play keeps it awake.

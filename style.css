@@ -14,6 +14,7 @@
   --p-jefferson: var(--gold);
   --p-davide: var(--cyan);
   --p-jack: var(--pink);
+  --p-adam: #b98cff;
   --tint: 20%;
 
   --px: "VT323", ui-monospace, monospace;
@@ -93,10 +94,37 @@ code { font-family: var(--px); color: var(--cyan); }
 }
 .tagline { margin: 10px auto 0; max-width: 34ch; font-size: 1.25rem; color: #4a6585; }
 
+/* Season label and the button that flips to the Season 1 archive */
+.season-bar { margin: 14px 0 0; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px 14px; }
+.season-label {
+  font-size: 1.2rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--deep);
+  background: var(--gold);
+  padding: 4px 10px;
+  box-shadow: 0 3px 0 #c9952e;
+}
+.archive-btn {
+  display: inline-block;
+  font: 400 1.2rem/1 var(--px);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--foam);
+  background: var(--deep);
+  border: 2px solid var(--cyan);
+  padding: 6px 12px;
+  box-shadow: 0 3px 0 #0e6f86;
+}
+.archive-btn:hover { background: #142846; }
+.archive-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #0e6f86; }
+.archived .season-label { background: var(--drift); box-shadow: 0 3px 0 #4a6585; }
+
 .boat {
   position: relative;
   display: block;
-  width: clamp(150px, 22vw, 238px);
+  width: clamp(168px, 24.5vw, 266px);
   height: auto;
   margin: 18px 0 -18px 12%;
   z-index: 2;
@@ -128,6 +156,10 @@ code { font-family: var(--px); color: var(--cyan); }
 .banner.install { display: flex; align-items: center; gap: 12px; border-color: var(--pink); }
 .banner.install[hidden] { display: none; }
 .banner.install p { margin: 0; flex: 1; }
+.banner.archive { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; border-color: var(--drift); }
+.banner.archive[hidden] { display: none; }
+.banner.archive p { margin: 0; flex: 1 1 260px; }
+.banner.archive .form-msg { flex-basis: 100%; }
 .banner strong { color: var(--pink); font-weight: 400; }
 .share-glyph { width: 1em; height: 1em; vertical-align: -.1em; }
 .banner-close {
@@ -151,10 +183,10 @@ code { font-family: var(--px); color: var(--cyan); }
 }
 @media (min-width: 880px) {
   .layout { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
-  .tally, .standing { grid-column: 1 / -1; }
+  .tally, .standing, .reigning, .archived .calendar { grid-column: 1 / -1; }
 }
 
-.kitchen, .calendar, .tally, .standing {
+.kitchen, .calendar, .tally, .standing, .reigning {
   position: relative;
   background: rgb(13 26 46 / .82);
   border: 1px solid var(--line);
@@ -162,7 +194,7 @@ code { font-family: var(--px); color: var(--cyan); }
   box-shadow: 0 0 0 1px rgb(5 10 20 / .6), 0 18px 40px -20px rgb(0 0 0 / .8);
 }
 /* Pixel corner ticks: the panels' one ornament */
-.kitchen::before, .calendar::before, .tally::before, .standing::before {
+.kitchen::before, .calendar::before, .tally::before, .standing::before, .reigning::before {
   content: "";
   position: absolute;
   inset: -1px;
@@ -210,6 +242,9 @@ code { font-family: var(--px); color: var(--cyan); }
   box-shadow: inset -3px -3px 0 rgb(0 0 0 / .25), inset 3px 3px 0 rgb(255 255 255 / .3);
 }
 .avatar.sm { width: 26px; height: 26px; font-size: 1.15rem; box-shadow: inset -2px -2px 0 rgb(0 0 0 / .25); }
+/* Baby Adam's avatar is his little face instead of a letter */
+.avatar.baby { background: color-mix(in srgb, var(--pc) 22%, var(--deep)); box-shadow: inset 0 0 0 2px var(--pc); }
+.avatar.baby svg { width: 70%; height: 70%; }
 
 /* ---------- Score form ---------- */
 .order { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
@@ -330,6 +365,35 @@ input#score { font-size: 1.8rem; color: var(--gold); }
 .standing-why { font-size: 1.25rem; color: var(--drift); }
 .standing-why strong { font-weight: 400; color: var(--foam); }
 .standing-empty { margin: 0; color: var(--drift); font-size: 1.25rem; }
+
+/* ---------- Reigning Lebron: the Season 1 champion ---------- */
+.reigning { border-color: color-mix(in srgb, var(--gold) 55%, var(--line)); box-shadow: 0 0 40px -18px var(--gold), 0 18px 40px -20px rgb(0 0 0 / .8); }
+.reigning::before {
+  background:
+    linear-gradient(var(--gold), var(--gold)) top left / 8px 2px,
+    linear-gradient(var(--gold), var(--gold)) top left / 2px 8px,
+    linear-gradient(var(--gold), var(--gold)) bottom right / 8px 2px,
+    linear-gradient(var(--gold), var(--gold)) bottom right / 2px 8px;
+  background-repeat: no-repeat;
+}
+.reigning .section-title { color: var(--gold); text-align: center; }
+.reign { display: grid; justify-items: center; text-align: center; gap: 8px; }
+.reign + .reign { margin-top: 28px; }
+.reign-crown { width: 110px; height: 90px; filter: drop-shadow(0 0 24px rgb(255 209 102 / .6)); animation: bob 3.2s steps(4, end) infinite; }
+.reign-name {
+  margin: 6px 0 0;
+  font-size: clamp(2.2rem, 8vw, 3.6rem);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--gold);
+  text-shadow: -.04em 0 var(--pink), .04em 0 var(--cyan), 0 0 22px rgb(255 209 102 / .45);
+}
+.reign-sub { margin: 0; font-size: 1.3rem; color: var(--drift); }
+.reign-stats { margin: 14px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; width: 100%; max-width: 720px; }
+.reign-stats div { padding: 10px; border: 1px solid var(--line); background: color-mix(in srgb, var(--gold) 6%, var(--deep)); }
+.reign-stats dt { font-size: 1rem; letter-spacing: .15em; text-transform: uppercase; color: var(--drift); }
+.reign-stats dd { margin: 4px 0 0; font-size: 2rem; line-height: 1; color: var(--gold); font-variant-numeric: tabular-nums; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
