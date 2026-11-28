@@ -157,6 +157,8 @@ function renderChrome() {
   $("kitchen").hidden = archived;
   $("reigning").hidden = archived;
   $("lebron-title").textContent = archived ? `${season.label} Lebron` : "Current Lebron";
+  $("jester-title").textContent = archived ? `${season.label} Jestermaxxer` : "Current Jestermaxxer";
+  $("mookfish-title").textContent = archived ? `${season.label} Mookfish` : "Current Mookfish";
   $("doofus-title").textContent = archived ? `${season.label} doofus` : "Current doofus";
 
   if (archived) {
@@ -275,24 +277,36 @@ function renderTally() {
     .join("");
 }
 
-// Season points: the Lebron has the most, the doofus the fewest. Tied totals share the title.
+// Season points, ranked by distinct totals: the Lebron has the most, then the Jestermaxxer (2nd),
+// then the Mookfish (3rd); the doofus has the fewest. Tied totals share the title. The doofus title
+// wins over 2nd/3rd, so with three papas there's no Mookfish.
 function renderStandings() {
+  const middle = [["jester", "jester"], ["mookfish", "mookfish"]];
   if (days.size === 0) {
     $("lebron-body").innerHTML = `<p class="standing-empty">No scores yet, so the crown is up for grabs.</p>`;
     $("doofus-body").innerHTML = `<p class="standing-empty">No scores yet, so nobody's the doofus. Yet.</p>`;
+    for (const [id] of middle) $(id).hidden = true;
     return;
   }
   const totals = totalsFor(days, PLAYERS);
-  const values = Object.values(totals);
-  const high = Math.max(...values);
-  const low = Math.min(...values);
-  const below = values.filter((t) => t < high);
-  const above = values.filter((t) => t > low);
+  const tiers = [...new Set(Object.values(totals))].sort((a, b) => b - a);
+  const high = tiers[0];
+  const low = tiers[tiers.length - 1];
+  const holders = (t) => PLAYERS.filter((p) => totals[p.id] === t);
+  const gaps = (i) => [
+    i > 0 ? `${fmt(tiers[i - 1] - tiers[i])} behind the papa above` : "",
+    i < tiers.length - 1 ? `${fmt(tiers[i] - tiers[i + 1])} ahead of the next papa` : "",
+  ].filter(Boolean).join(", ") || "all tied up";
+  const why = (i) => `Total points: <strong>${fmt(tiers[i])}</strong>, ${gaps(i)}`;
 
-  $("lebron-body").innerHTML = standingCard("crown", "--jewel", PLAYERS.filter((p) => totals[p.id] === high),
-    `Total points: <strong>${fmt(high)}</strong>, ${below.length ? `${fmt(high - Math.max(...below))} ahead of the next papa` : "all tied up"}`);
-  $("doofus-body").innerHTML = standingCard("dunce", "--cap-band", PLAYERS.filter((p) => totals[p.id] === low),
-    `Total points: <strong>${fmt(low)}</strong>, ${above.length ? `${fmt(Math.min(...above) - low)} behind the next papa` : "all tied up"}`);
+  $("lebron-body").innerHTML = standingCard("crown", "--jewel", holders(high), why(0));
+  middle.forEach(([id, icon], n) => {
+    const i = n + 1;
+    const has = i < tiers.length - 1;
+    $(id).hidden = !has;
+    $(`${id}-body`).innerHTML = has ? standingCard(icon, "--ribbon", holders(tiers[i]), why(i)) : "";
+  });
+  $("doofus-body").innerHTML = standingCard("dunce", "--cap-band", holders(low), why(tiers.length - 1));
 }
 
 function standingCard(icon, colorVar, holders, why) {

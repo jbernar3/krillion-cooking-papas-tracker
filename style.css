@@ -9,6 +9,8 @@
   --cyan: #4de3ff;
   --pink: #ff5d8f;
   --gold: #ffd166;
+  --silver: #c9d6ea;
+  --bronze: #d98c4a;
   --hat-band: var(--pink);
 
   --p-jefferson: var(--gold);
@@ -352,14 +354,17 @@ input#score { font-size: 1.8rem; color: var(--gold); }
   .tally .short { display: inline; }
 }
 
-/* ---------- Current Lebron / Current doofus ---------- */
+/* ---------- Current Lebron / Jestermaxxer / Mookfish / doofus ---------- */
 .lebron .section-title { color: var(--gold); }
+.jester .section-title { color: var(--silver); }
+.mookfish .section-title { color: var(--bronze); }
 .doofus .section-title { color: var(--pink); }
 .standing-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
 .standing-list li { display: flex; align-items: center; gap: 18px; }
 .standing-icon { flex: none; filter: drop-shadow(0 0 14px color-mix(in srgb, var(--pc) 40%, transparent)); }
 .standing-icon.crown { width: 66px; height: 54px; filter: drop-shadow(0 0 16px rgb(255 209 102 / .55)); }
 .standing-icon.dunce { width: 54px; height: 66px; }
+.standing-icon.jester, .standing-icon.mookfish { width: 54px; height: 60px; margin-inline: 6px; }
 .standing-text { display: grid; gap: 4px; min-width: 0; }
 .standing-name { font-size: clamp(1.9rem, 6vw, 2.6rem); line-height: 1; text-transform: uppercase; letter-spacing: .08em; color: var(--pc); text-shadow: 0 0 14px color-mix(in srgb, var(--pc) 45%, transparent); }
 .standing-why { font-size: 1.25rem; color: var(--drift); }
